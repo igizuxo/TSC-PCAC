@@ -64,7 +64,7 @@ def traverse_path_recursively(rootdir):
 def test( model, loader, criterion, writer,epoch):
     mean_loss = []
     mean_bpp = []
-    mean_cd = []
+    mean_mse = []
     length = len(loader)
     with torch.no_grad():
         for j, data in enumerate(loader):
@@ -77,9 +77,9 @@ def test( model, loader, criterion, writer,epoch):
 
 
             model.eval()
-            bpp, pc_coor, cd = model(x)
-            loss, cd, bpp = criterion(bpp, cd)
-            mean_cd.append(cd.mean().item())
+            bpp, pc_coor, mse = model(x)
+            loss, mse, bpp = criterion(bpp, mse)
+            mean_mse.append(mse.mean().item())
             mean_loss.append(loss.mean().item())
             mean_bpp.append(bpp.mean().item())
             # writer.
@@ -93,9 +93,9 @@ def test( model, loader, criterion, writer,epoch):
                                global_step=epoch)
             writer.add_scalars(main_tag='val/metrics',
                                tag_scalar_dict={
-                                   'mmse': cd},
+                                   'mmse': mse},
                                global_step=epoch)
-    return np.mean(mean_loss), np.mean(mean_bpp), np.mean(mean_cd)
+    return np.mean(mean_loss), np.mean(mean_bpp), np.mean(mean_mse)
 
 
 def main(args):
@@ -351,7 +351,7 @@ def main(args):
                                                                    writer,epoch)
                 log_string('val loss: %f' % (mean_loss_test))
                 log_string('val bpp: %f' % (mean_bpp_test))
-                log_string('val cd: %f' % (mean_mse_test))
+                log_string('val mse: %f' % (mean_mse_test))
 
                 if epoch % 10 == 0:
                     savepath = str(checkpoints_dir) + '/' + str(epoch) + '.pth'
