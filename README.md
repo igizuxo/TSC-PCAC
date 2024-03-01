@@ -13,7 +13,7 @@ Point Cloud Attribute Compression with Sparse Convolution and Voxel Transformer
 
 - torchac==0.9.3
 
-https://drive.google.com/file/d/1wzfq6fwUkKoe46oxzCYmRrUDPgLAO-Zd/view?usp=drive_link
+- preweight models :<https://drive.google.com/file/d/1wzfq6fwUkKoe46oxzCYmRrUDPgLAO-Zd/view?usp=drive_link>
 
 ## Test
 
