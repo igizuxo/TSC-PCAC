@@ -15,8 +15,8 @@ torchac==0.9.3
 
 ## Test
 
-python codec.py --dataset_path test_path
+python codec.py --dataset_path test_rootdir
 
 ## Train
 
-python train.py --batch_size 8 --learning 1e-4 --lamb 16000 --dataset_path train_path --val_path val_path
+python train.py --batch_size 8 --learning 1e-4 --lamb 16000 --dataset_path train_rootdir --val_path val_rootdir
