@@ -3,15 +3,17 @@ Point Cloud Attribute Compression with Sparse Convolution and Voxel Transformer
 
 ## Requirments
 
-CUDA=11.1
+-CUDA=11.1
 
-pytorch=1.9.0
+-pytorch=1.9.0
 
-python=3.8
+-python=3.8
 
-minkowskiengine==0.5.4
+-minkowskiengine==0.5.4
 
-torchac==0.9.3
+-torchac==0.9.3
+
+https://drive.google.com/file/d/1wzfq6fwUkKoe46oxzCYmRrUDPgLAO-Zd/view?usp=drive_link
 
 ## Test
 
