@@ -80,18 +80,13 @@ if __name__ == '__main__':
                 dec_time=round(time.time() - start_time, 3)
                 print('Dec Time:\t', dec_time, 's')
                 bpp=8*(bytes_strings+bytes_strings_hyper)/(len(xyz))
-                ori_pcd = open3d.geometry.PointCloud()  # 定义点云
-                ori_pcd.points = open3d.utility.Vector3dVector((x_dec.C[:, 1:].cpu()).float())  # 定义点云坐标位置[N,3]
-                ori_pcd.colors = open3d.utility.Vector3dVector(yuv_rgb((pc_data)))  # 定义点云坐标位置[N,3]
                 rec_pcd = open3d.geometry.PointCloud()  # 定义点云
                 rec_pcd.points = open3d.utility.Vector3dVector((x_dec.C[:, 1:].cpu()).float())  # 定义点云坐标位置[N,3]
                 rec_pcd.colors = open3d.utility.Vector3dVector(yuv_rgb((x_dec.F.cpu())))  # 定义点云坐标位置[N,3]
                 if not os.path.exists('pc_file'): os.makedirs('pc_file')
-                orifile='pc_file/'+filename+'_ori.ply'
                 recfile = 'pc_file/' + filename + '_r' + str(idx_rate) + '_rec.ply'
                 open3d.io.write_point_cloud(recfile, rec_pcd, write_ascii=True)
-                open3d.io.write_point_cloud(orifile, ori_pcd, write_ascii=True)
-                pc_error_metrics = pc_error(infile1=orifile, infile2=recfile, res=1)  # res为数据峰谷差值
+                pc_error_metrics = pc_error(infile1=filedir, infile2=recfile, res=1)  # res为数据峰谷差值
                 pc_errors = [pc_error_metrics["c[0],PSNRF"][0],
                              pc_error_metrics["c[1],PSNRF"][0],
                              pc_error_metrics["c[2],PSNRF"][0]]
