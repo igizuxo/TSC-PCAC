@@ -196,22 +196,7 @@ def make_data_loader_mulgpu(dataset, train_sampler,batch_size=1, shuffle=True, n
     return loader
 
 
-if __name__ == "__main__":
-    # filedirs = sorted(glob.glob('/home/ubuntu/HardDisk2/color_training_datasets/training_dataset/'+'*.h5'))
-    filedirs = sorted(glob.glob('/./8iVFB_test/' + '*.ply'))
-    test_dataset = PCDataset(filedirs)
-    test_dataloader = make_data_loader(dataset=test_dataset, batch_size=2, shuffle=True, num_workers=1, repeat=False,
-                                       collate_fn=collate_pointcloud_fn)
-    for idx, (coords, feats) in enumerate(tqdm(test_dataloader)):
-        print("=" * 20, "check dataset", "=" * 20,
-              "\ncoords:\n", coords, "\nfeat:\n", feats)
 
-    test_iter = iter(test_dataloader)
-    print(test_iter)
-    for i in tqdm(range(10)):
-        coords, feats = test_iter.next()
-        print("=" * 20, "check dataset", "=" * 20,
-              "\ncoords:\n", coords, "\nfeat:\n", feats)
 
 
 
