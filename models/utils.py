@@ -270,14 +270,7 @@ class Hyper_decoder(nn.Module):
 
         return x
 
-class mask_conv(ME.MinkowskiConvolution):
-    def __init__(self,*args,**kwargs):
-        super(mask_conv, self).__init__(*args,**kwargs)
-        self.mask=torch.zeros([125,128,256]).cuda()
-        self.mask[:62,:,:]=1
-    def forward(self,x):
-        self.kernel.data *=self.mask
-        return super(mask_conv,self).forward(x)
+
 
 class TCM(nn.Module):
     def __init__(self,input_dim):
