@@ -9,9 +9,9 @@ Point Cloud Attribute Compression with Sparse Convolution and Voxel Transformer
 
 - python=3.8
 
-- minkowskiengine==0.5.4
+- minkowskiengine=0.5.4
 
-- torchac==0.9.3
+- torchac=0.9.3
 
 - preweight models: <https://drive.google.com/file/d/1wzfq6fwUkKoe46oxzCYmRrUDPgLAO-Zd/view?usp=drive_link>
 
