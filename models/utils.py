@@ -501,20 +501,7 @@ class glob_feat(nn.Module):
             dimension=3)
         self.relu = ME.MinkowskiReLU(inplace=True)
     def forward(self,x):
-        # out1_space=self.relu(self.conv1(x)).F.mean(dim=-1,keepdim=True)
-        # out2_channel=self.relu(self.conv2(x)).F.mean(dim=0,keepdim=True)
-        # final_encoding = torch.matmul(out1_space, out2_channel)+out1_space+out2_channel
-        # final_encoding = torch.sqrt(final_encoding+1e-12) # B,C/8,N
-        # final_encoding=ME.SparseTensor(
-        #     features=final_encoding,
-        #     coordinate_map_key=x.coordinate_map_key,
-        #     coordinate_manager=x.coordinate_manager,
-        #     device=x.device)
-        # final_encoding =self.relu(self.conv3(final_encoding))
-        # final_encoding=x-final_encoding#zui hou meijia relu
-        # return final_encoding
-        # out1_space=self.relu(self.conv1(x)).F.mean(dim=-1,keepdim=True)
-        # out2_channel=self.relu(self.conv2(x)).F.mean(dim=0,keepdim=True)
+
         out1_space=self.relu(self.conv1(x))
         out2_channel=self.relu(self.conv2(x))
         all=[]
