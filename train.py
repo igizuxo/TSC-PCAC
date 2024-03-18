@@ -20,9 +20,9 @@ import MinkowskiEngine as ME
 import gc
 import random
 from torch.utils.data.distributed import DistributedSampler
-# os.environ["CUDA_VISIBLE_DEVICES"] = '1'
+
 device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
-##use python -m torch.distributed.launch --nproc_per_node=2 --nnodes=1 train.py
+
 
 def parse_args():
     '''PARAMETERS'''
@@ -30,7 +30,7 @@ def parse_args():
     parser.add_argument("--local_rank", type=int, default=0)
     parser.add_argument('--batch_size', type=int, default=1, help='batch size in training [default: 32]')
     parser.add_argument('--model', default='TSC-PCAC', help='model name')
-    parser.add_argument('--epoch', default=3000, type=int, help='number of epoch in training [default: 100]')
+    parser.add_argument('--epoch', default=1000, type=int, help='number of epoch in training [default: 100]')
     parser.add_argument('--learning_rate', default=1e-4, type=float, help='learning rate in training [default: 0.001]')
     parser.add_argument('--gpu', type=str, default='1', help='specify gpu device [default: 0]')
     parser.add_argument('--optimizer', type=str, default='Adam', help='optimizer for training [default: Adam]')
