@@ -1,6 +1,5 @@
 # TSC-PCAC
-Point Cloud Attribute Compression with Sparse Convolution and Voxel Transformer
-
+TSC-PCAC: Voxel Transformer and Sparse Convolution Based Point Cloud Attribute Compression for 3D Broadcasting
 ## Requirments
 
 - CUDA=11.1
